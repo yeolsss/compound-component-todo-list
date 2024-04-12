@@ -1,13 +1,13 @@
-import React, { PropsWithChildren } from "react";
+import React from "react";
 import Form from "@/app/(provider)/(root)/_components/CreateTodo/Form";
 
-interface TodoWrapperTypes extends React.FC<PropsWithChildren> {
-  todoForm: typeof Form;
+interface Props {
+  children: React.ReactNode;
 }
 
-const CreateTodo: TodoWrapperTypes = ({ children }) => {
+function CreateTodo({ children }: Props) {
   return <>{children}</>;
-};
+}
 
 CreateTodo.todoForm = Form;
 

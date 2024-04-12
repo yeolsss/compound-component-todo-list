@@ -1,15 +1,14 @@
 import Title from "@/app/(provider)/(root)/_components/TodoList/TodoCard/Title";
-import React, { PropsWithChildren } from "react";
+import React from "react";
 import TodoCardButtonWrapper from "@/app/(provider)/(root)/_components/TodoList/TodoCard/TodoCardButtonWrapper";
 
-interface TodoCardHeaderTypes extends React.FC<PropsWithChildren> {
-  title: typeof Title;
-  buttonWrapper: typeof TodoCardButtonWrapper;
+interface Props {
+  children?: React.ReactNode;
 }
 
-const TodoCardHeader: TodoCardHeaderTypes = ({ children }) => {
+function TodoCardHeader({ children }: Props) {
   return <div className="flex justify-between">{children}</div>;
-};
+}
 
 TodoCardHeader.title = Title;
 TodoCardHeader.buttonWrapper = TodoCardButtonWrapper;
