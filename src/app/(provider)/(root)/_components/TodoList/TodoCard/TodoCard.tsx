@@ -11,26 +11,30 @@ interface Props {
 function TodoCard({ todo }: Props) {
   const { handleOnClickDoneTodo, handleOnClickDeleteTodo } = useTodo();
   return (
-    <article>
+    <article className="flex flex-col gap-5">
       <TodoCardHeader>
         <TodoCardHeader.title>
           {!todo.done ? "TODO" : "DONE"}
         </TodoCardHeader.title>
 
-        <TodoCardHeader.doneButton
-          onClick={() => handleOnClickDoneTodo(todo.id)}
-        >
-          {!todo.done ? "DONE" : "TODO"}
-        </TodoCardHeader.doneButton>
+        <TodoCardHeader.buttonWrapper>
+          <TodoCardHeader.buttonWrapper.doneButton
+            className="bg-green-700 px-2 rounded hover:bg-green-500 transition-colors duration-100 ease-in"
+            onClick={() => handleOnClickDoneTodo(todo.id)}
+          >
+            {!todo.done ? "DONE" : "TODO"}
+          </TodoCardHeader.buttonWrapper.doneButton>
 
-        <TodoCardHeader.deleteButton
-          onClick={() => handleOnClickDeleteTodo(todo.id)}
-        >
-          DEL
-        </TodoCardHeader.deleteButton>
+          <TodoCardHeader.buttonWrapper.deleteButton
+            className="bg-red-700 px-2 rounded hover:bg-red-500 transition-colors duration-100 ease-in"
+            onClick={() => handleOnClickDeleteTodo(todo.id)}
+          >
+            DEL
+          </TodoCardHeader.buttonWrapper.deleteButton>
+        </TodoCardHeader.buttonWrapper>
       </TodoCardHeader>
 
-      <p>{todo.todo}</p>
+      <p className="break-words tracking-wide">{todo.todo}</p>
     </article>
   );
 }

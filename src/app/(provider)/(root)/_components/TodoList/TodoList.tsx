@@ -3,6 +3,7 @@
 import { ITodo, useTodo } from "@/contexts/TodoContext";
 import TodoWrapper from "@/app/(provider)/(root)/_components/TodoWrapper";
 import TodoSection from "@/components/TodoSection";
+import { useEffect } from "react";
 
 function TodoList() {
   const { todos } = useTodo();
@@ -23,6 +24,9 @@ function TodoList() {
     },
   );
 
+  useEffect(() => {
+    console.log("rerender");
+  }, []);
   return (
     <section className="flex flex-col gap-20">
       <TodoSection>

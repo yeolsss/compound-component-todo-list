@@ -1,11 +1,10 @@
 import Title from "@/app/(provider)/(root)/_components/TodoList/TodoCard/Title";
 import React, { PropsWithChildren } from "react";
-import Button from "@/app/(provider)/(root)/_components/Button";
+import TodoCardButtonWrapper from "@/app/(provider)/(root)/_components/TodoList/TodoCard/TodoCardButtonWrapper";
 
 interface TodoCardHeaderTypes extends React.FC<PropsWithChildren> {
   title: typeof Title;
-  doneButton: typeof Button;
-  deleteButton: typeof Button;
+  buttonWrapper: typeof TodoCardButtonWrapper;
 }
 
 const TodoCardHeader: TodoCardHeaderTypes = ({ children }) => {
@@ -13,7 +12,6 @@ const TodoCardHeader: TodoCardHeaderTypes = ({ children }) => {
 };
 
 TodoCardHeader.title = Title;
-TodoCardHeader.doneButton = Button;
-TodoCardHeader.deleteButton = Button;
+TodoCardHeader.buttonWrapper = TodoCardButtonWrapper;
 
 export default TodoCardHeader;
