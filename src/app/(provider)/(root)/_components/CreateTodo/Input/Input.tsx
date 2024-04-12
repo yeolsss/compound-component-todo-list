@@ -1,14 +1,9 @@
-import React, { forwardRef } from "react";
+import React, { ComponentProps, forwardRef } from "react";
 
-interface Props {
-  type: string;
-  placeholder: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+interface Props extends ComponentProps<"input"> {}
 
 const Input = forwardRef<HTMLInputElement, Props>(({ ...props }, ref) => {
-  return <input ref={ref} {...props} className="text-black p-2 rounded" />;
+  return <input ref={ref} {...props} />;
 });
 
 Input.displayName = "Input";

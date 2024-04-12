@@ -1,5 +1,4 @@
 "use client";
-// 1. 만든다
 import React, { createContext, useContext } from "react";
 
 export interface ITodo {
@@ -14,6 +13,8 @@ type TodoContext = {
     e: React.FormEvent<HTMLFormElement>,
     todo: string,
     setTodo: React.Dispatch<React.SetStateAction<string>>,
+    setTodoValueError: React.Dispatch<React.SetStateAction<boolean>>,
+    ref: React.RefObject<HTMLInputElement>,
   ) => void;
   handleOnClickDoneTodo: (todoId: number) => void;
   handleOnClickDeleteTodo: (todoId: number) => void;

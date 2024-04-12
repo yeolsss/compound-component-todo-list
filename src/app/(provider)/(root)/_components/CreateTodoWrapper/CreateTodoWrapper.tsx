@@ -6,14 +6,21 @@ import { useTodo } from "@/contexts/TodoContext";
 import useInput from "@/hooks/Input";
 
 function CreateTodoWrapper() {
-  const [todo, setTodo, handleOnChangeTodo, todoRef] = useInput<string>("");
+  const [
+    todo,
+    setTodo,
+    handleOnChangeTodo,
+    todoRef,
+    todoValueError,
+    setTodoValueError,
+  ] = useInput<string>("");
   const { handleOnSubmitAddTodo } = useTodo();
 
   return (
     <CreateTodo>
       <CreateTodo.todoForm
         onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
-          handleOnSubmitAddTodo(e, todo, setTodo)
+          handleOnSubmitAddTodo(e, todo, setTodo, setTodoValueError, todoRef)
         }
       >
         <CreateTodo.todoForm.input
@@ -21,6 +28,7 @@ function CreateTodoWrapper() {
           placeholder={"할 일을 입력하세요."}
           value={todo}
           onChange={handleOnChangeTodo}
+          className={`border-2 focus:border-green-400 text-black p-2 rounded ${todoValueError && "!border-red-500"}`}
           ref={todoRef}
         />
 

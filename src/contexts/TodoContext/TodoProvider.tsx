@@ -16,8 +16,18 @@ export default function TodoProvider({ children }: Props) {
       e: React.FormEvent<HTMLFormElement>,
       todo: string,
       setTodo: React.Dispatch<React.SetStateAction<string>>,
+      setTodoValueError: React.Dispatch<React.SetStateAction<boolean>>,
+      ref: React.RefObject<HTMLInputElement>,
     ) => {
       e.preventDefault();
+
+      if (todo.trim() === "") {
+        alert("할 일을 입력해 주세요!");
+        setTodoValueError(true);
+        ref.current?.focus();
+        return;
+      }
+
       const newTodo = new Todo(Date.now(), todo, false);
       setTodos((prevState: ITodo[]) => [newTodo, ...prevState]);
       setTodo("");
