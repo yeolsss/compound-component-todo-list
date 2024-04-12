@@ -1,4 +1,4 @@
-import { ITodo } from "@/contexts/TodoContext/index";
+import { ITodo } from "@/contexts/TodoContext";
 
 export class Todo implements ITodo {
   id: number;

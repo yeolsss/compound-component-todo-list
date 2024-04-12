@@ -2,7 +2,7 @@
 
 import { ITodo, TodoContext } from "@/contexts/TodoContext/index";
 import React, { useCallback, useMemo, useState } from "react";
-import { Todo } from "@/contexts/TodoContext/Todo.class";
+import { Todo } from "@/class/Todo.class";
 
 interface Props {
   children: React.ReactNode;

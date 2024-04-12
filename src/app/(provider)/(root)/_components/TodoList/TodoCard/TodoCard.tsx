@@ -1,6 +1,6 @@
 "use client";
 
-import { Todo } from "@/contexts/TodoContext/Todo.class";
+import { Todo } from "@/class/Todo.class";
 import TodoCardHeader from "@/app/(provider)/(root)/_components/TodoList/TodoCard/TodoCardHeader";
 import { useTodo } from "@/contexts/TodoContext";
 
