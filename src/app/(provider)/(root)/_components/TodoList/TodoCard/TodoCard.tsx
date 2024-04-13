@@ -1,11 +1,10 @@
 "use client";
 
-import { Todo } from "@/class/Todo.class";
+import { ITodo, useTodo } from "@/contexts/TodoContext/TodoProvider";
 import TodoCardHeader from "@/app/(provider)/(root)/_components/TodoList/TodoCard/TodoCardHeader";
-import { useTodo } from "@/contexts/TodoContext";
 
 interface Props {
-  todo: Todo;
+  todo: ITodo;
 }
 
 function TodoCard({ todo }: Props) {

@@ -1,5 +1,5 @@
 import React from "react";
-import TodoProvider from "@/contexts/TodoContext/TodoProvider";
+import TodoProvider from "@/contexts/TodoContext";
 
 interface Props {
   children: React.ReactNode;

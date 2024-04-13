@@ -1,12 +1,47 @@
 "use client";
 
-import { ITodo, TodoContext } from "@/contexts/TodoContext/index";
-import React, { useCallback, useMemo, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 import { Todo } from "@/class/Todo.class";
 
 interface Props {
   children: React.ReactNode;
 }
+
+export interface ITodo {
+  id: number;
+  todo: string;
+  done: boolean;
+}
+
+type TodoContextTypes = {
+  todos: ITodo[];
+  handleOnSubmitAddTodo: (
+    e: React.FormEvent<HTMLFormElement>,
+    todo: string,
+    setTodo: React.Dispatch<React.SetStateAction<string>>,
+    setTodoValueError: React.Dispatch<React.SetStateAction<boolean>>,
+    ref: React.RefObject<HTMLInputElement>,
+  ) => void;
+  handleOnClickDoneTodo: (todoId: number) => void;
+  handleOnClickDeleteTodo: (todoId: number) => void;
+};
+
+const initialTodo: TodoContextTypes = {
+  todos: [],
+  handleOnSubmitAddTodo: () => {},
+  handleOnClickDoneTodo: () => {},
+  handleOnClickDeleteTodo: () => {},
+};
+
+export const TodoContext = createContext(initialTodo);
+
+export const useTodo = () => useContext(TodoContext);
 
 export default function TodoProvider({ children }: Props) {
   const [todos, setTodos] = useState<Todo[]>([]);
