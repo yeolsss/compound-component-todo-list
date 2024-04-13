@@ -21,7 +21,7 @@ export interface ITodo {
 
 type TodoContextTypes = {
   todos: ITodo[];
-  handleOnSubmitAddTodo: (
+  handleOnSubmitTodo: (
     e: React.FormEvent<HTMLFormElement>,
     todo: string,
     setTodo: React.Dispatch<React.SetStateAction<string>>,
@@ -34,7 +34,7 @@ type TodoContextTypes = {
 
 const initialTodo: TodoContextTypes = {
   todos: [],
-  handleOnSubmitAddTodo: () => {},
+  handleOnSubmitTodo: () => {},
   handleOnClickDoneTodo: () => {},
   handleOnClickDeleteTodo: () => {},
 };
@@ -46,7 +46,7 @@ export const useTodo = () => useContext(TodoContext);
 export default function TodoProvider({ children }: Props) {
   const [todos, setTodos] = useState<Todo[]>([]);
 
-  const handleOnSubmitAddTodo = useCallback(
+  const handleOnSubmitTodo = useCallback(
     (
       e: React.FormEvent<HTMLFormElement>,
       todo: string,
@@ -85,16 +85,11 @@ export default function TodoProvider({ children }: Props) {
   const value = useMemo(
     () => ({
       todos,
-      handleOnSubmitAddTodo,
+      handleOnSubmitTodo,
       handleOnClickDoneTodo,
       handleOnClickDeleteTodo,
     }),
-    [
-      todos,
-      handleOnSubmitAddTodo,
-      handleOnClickDoneTodo,
-      handleOnClickDeleteTodo,
-    ],
+    [todos, handleOnSubmitTodo, handleOnClickDoneTodo, handleOnClickDeleteTodo],
   );
 
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;

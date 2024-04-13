@@ -15,12 +15,12 @@ function CreateTodoWrapper() {
     setTodoValueError,
   ] = useInput<string>("");
 
-  const { handleOnSubmitAddTodo } = useTodo();
+  const { handleOnSubmitTodo } = useTodo();
 
   return (
     <Form
       onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
-        handleOnSubmitAddTodo(e, todo, setTodo, setTodoValueError, todoRef)
+        handleOnSubmitTodo(e, todo, setTodo, setTodoValueError, todoRef)
       }
     >
       <Form.input
